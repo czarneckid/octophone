@@ -1,4 +1,3 @@
-octophone
-=========
+# octophone
 
-Interact with GitHub pull requests on your phone
+Interact with GitHub pull requests on your phone!
