@@ -59,7 +59,7 @@ module Octophone
 
     post '/merge_pull_request/:id' do
       pull_request = Github::PullRequests.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
-      pull_request.merge('czarneckid', 'test-repository', params[:id].to_i)
+      p pull_request.merged?('czarneckid', 'test-repository', params[:id])
     end
   end
 end
