@@ -1,3 +1,4 @@
+require 'json'
 require 'sinatra/base'
 require 'tropo-webapi-ruby'
 require 'github_api'
@@ -40,9 +41,7 @@ module Octophone
     end
 
     post '/merge_pull_request' do
-      p ENV['GITHUB_OAUTH_TOKEN']
-      p params
-      p request.env["rack.input"].read
+      p JSON.parse(request.env["rack.input"].read)
       pull_request = ::Github::PullRequests.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
       # p pull_request
       # p pull_request.merged?('czarneckid', 'test-repository', params[:id])
