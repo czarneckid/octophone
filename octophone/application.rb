@@ -21,7 +21,7 @@ module Octophone
           on :event => 'hangup', :next => '/hangup'
           on :event => 'continue', :next => "/merge_pull_request"
           ask({ :name => 'pull_request_number',
-            :bargein => true,
+            :bargein => false,
             :timeout => 30,
             :required => true }) do
               say :value => 'Please type in the pull request number to merge'
