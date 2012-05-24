@@ -41,8 +41,10 @@ module Octophone
     end
 
     post '/merge_pull_request' do
-      p JSON.parse(request.env["rack.input"].read)
+      parsed_input = JSON.parse(request.env["rack.input"].read)
+      p parsed_input['result']['actions']['value']
       pull_request = ::Github::PullRequests.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
+      # pull_request.merge('czarneckid', 'test-repository', parsed_input['result']['actions']['value'])
       # p pull_request
       # p pull_request.merged?('czarneckid', 'test-repository', params[:id])
       # pull_request.merge('czarneckid', 'test-repository', '2', :commit_message => "Merge from Octophone")
