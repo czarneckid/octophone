@@ -23,9 +23,9 @@ module Octophone
           ask({ :name => 'pull_request_number',
             :bargein => true,
             :timeout => 30,
-            :require => true }) do
+            :required => true }) do
               say :value => 'Please type in the pull request number to merge'
-              choices :value => '[5 DIGITS]', :term_char => '#'
+              choices :value => '[ANY]', :terminator => '#'
             end
           end
 
@@ -43,8 +43,8 @@ module Octophone
       p ENV['GITHUB_OAUTH_TOKEN']
       p params
       pull_request = ::Github::PullRequests.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
-      p pull_request
-      p pull_request.merged?('czarneckid', 'test-repository', params[:id])
+      # p pull_request
+      # p pull_request.merged?('czarneckid', 'test-repository', params[:id])
       # pull_request.merge('czarneckid', 'test-repository', '2', :commit_message => "Merge from Octophone")
       Tropo::Generator.say(:value => 'Goodbye.')
     end
