@@ -40,7 +40,8 @@ module Octophone
     post '/merge_pull_request' do
       parsed_input = JSON.parse(request.env["rack.input"].read)
       pull_request = ::Github::PullRequests.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
-      pull_request.merge('czarneckid', 'test-repository', parsed_input['result']['actions']['value'])
+      pull_request.merge('czarneckid', 'test-repository', parsed_input['result']['actions']['value'], 
+        :commit_message => 'Merged from Octophone!')
       merged = pull_request.merged?('czarneckid', 'test-repository', parsed_input['result']['actions']['value'])
       if merged
         Tropo::Generator.say(:value => 'Your pull request was merged successfully.')
