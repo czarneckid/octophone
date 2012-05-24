@@ -24,8 +24,8 @@ module Octophone
             :bargein => 'true',
             :timeout => 30,
             :required => 'true' }) do
-              say :value => 'Please type in the pull request number to merge'
-              choices :value => '[5 DIGITS]', :mode => 'dtmf', :terminator => '#'
+              say :value => 'Please type in the pull request number to merge, followed by an #.'
+              choices :value => '[1 DIGITS]', :mode => 'dtmf', :terminator => '#'
             end
           end
 
@@ -42,6 +42,7 @@ module Octophone
     post '/merge_pull_request' do
       p ENV['GITHUB_OAUTH_TOKEN']
       p params
+      p request.env["rack.input"].read
       pull_request = ::Github::PullRequests.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
       # p pull_request
       # p pull_request.merged?('czarneckid', 'test-repository', params[:id])
