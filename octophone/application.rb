@@ -11,7 +11,7 @@ module Octophone
     end
 
     post '/' do
-      @github = ::GitHub.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
+      @github = ::Github.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
       pull_request = @github.pull_requests.all('czarneckid', 'test-repository').first
       if pull_request
         tropo = Tropo::Generator.new do
@@ -33,7 +33,7 @@ module Octophone
     end
 
     post '/dialin' do
-      @github = ::GitHub.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
+      @github = ::Github.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
       pull_request = @github.pull_requests.all('czarneckid', 'test-repository').first
       if pull_request
         tropo = Tropo::Generator.new do
