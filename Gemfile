@@ -5,6 +5,7 @@ gem 'unicorn'
 
 gem 'github_api'
 gem 'tropo-webapi-ruby'
+gem 'addressable'
 
 group :development do
   gem 'heroku'

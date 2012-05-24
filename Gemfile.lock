@@ -67,6 +67,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   github_api
   heroku
   rack-test
