@@ -25,7 +25,7 @@ module Octophone
             :timeout => 30,
             :required => 'true' }) do
               say :value => 'Please type in the pull request number to merge'
-              choices :value => '[ANY]'
+              choices :value => '[ANY]', :mode => 'dtmf', :terminator => '#'
             end
           end
 
