@@ -14,18 +14,18 @@ module Octophone
     end
 
     post '/dialin' do
-      @github = ::Github.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
+      @github = ::Github.new
       pull_request = @github.pull_requests.all('czarneckid', 'test-repository').first
       if pull_request
         tropo = Tropo::Generator.new do
           on :event => 'hangup', :next => '/hangup'
-          on :event => 'continue', :next => "/merge_pull_request/2"
+          on :event => 'continue', :next => "/merge_pull_request"
           ask({ :name => 'pull_request_number',
-            :bargein => 'true',
+            :bargein => true,
             :timeout => 30,
-            :require => 'true' }) do
+            :require => true }) do
               say :value => 'Please type in the pull request number to merge'
-              choices :value => '[1 DIGITS]'
+              choices :value => '[5 DIGITS]', :term_char => '#'
             end
           end
 
@@ -36,6 +36,7 @@ module Octophone
     end
 
     post '/hangup' do
+      Tropo::Generator.say(:value => 'Goodbye.')
     end
 
     post '/merge_pull_request/:id' do
