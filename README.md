@@ -1,6 +1,6 @@
 # octophone
 
-Interact with GitHub pull requests on your phone!
+Merge GitHub pull requests from your phone!
 
 ## To-Do List
 
