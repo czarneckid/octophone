@@ -39,7 +39,7 @@ module Octophone
       Tropo::Generator.say(:value => 'Goodbye.')
     end
 
-    post '/merge_pull_request/:id' do
+    post '/merge_pull_request' do
       p ENV['GITHUB_OAUTH_TOKEN']
       p params
       pull_request = ::Github::PullRequests.new(:oauth_token => ENV['GITHUB_OAUTH_TOKEN'])
