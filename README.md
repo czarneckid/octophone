@@ -12,4 +12,4 @@ Merge GitHub pull requests from your phone!
 
 ## Copyright
 
-Copyright (c) 2012-2013 David Czarnecki. See LICENSE.txt for further details.
+Copyright (c) 2012-2014 David Czarnecki. See LICENSE.txt for further details.
